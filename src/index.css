@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400..800&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+@import 'tailwindcss';
+
+@theme {
+  /* Chart-recorder paper and ink. Cool neutral, never cream. */
+  --color-paper: #f1f3f2;
+  --color-paper-raised: #fafbfa;
+  --color-rule: #dcdfdd;
+  --color-rule-strong: #b9c1be;
+  --color-ink: #151f1d;
+  --color-ink-soft: #566462;
+  --color-ink-faint: #8a9794;
+
+  /* Magnitude ramp. Quiet until the data is loud. */
+  --color-mag-micro: #96a4a0;
+  --color-mag-minor: #2f7566;
+  --color-mag-light: #b8801f;
+  --color-mag-moderate: #c44a1b;
+  --color-mag-strong: #96170f;
+
+  --font-display: 'Archivo', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+
+  --text-micro: 0.6875rem;
+  --text-micro--line-height: 1rem;
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-display);
+    font-synthesis-weight: none;
+    -webkit-font-smoothing: antialiased;
+    /* Faint chart-recorder grid. */
+    background-image:
+      linear-gradient(to right, rgb(0 0 0 / 0.028) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(0 0 0 / 0.028) 1px, transparent 1px);
+    background-size: 28px 28px;
+  }
+
+  /* Numbers that sit in columns must align. */
+  .tnum {
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: 'tnum';
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-ink);
+    outline-offset: 2px;
+    border-radius: 1px;
+  }
+
+  ::selection {
+    background-color: var(--color-ink);
+    color: var(--color-paper);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
